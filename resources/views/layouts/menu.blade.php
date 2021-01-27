@@ -1,10 +1,13 @@
 <div class="page-wrapper chiller-theme toggled">
 
-
    <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-header">
-        <div class="user-pic">
+      <center>
+       <img src="{{asset('img_system/logo_icon.png')}}" width="30px" alt="">
+       <div style="display: inline; font-size: 15px;"> A-Best Company Limited</div>
+     </center>
+        <!-- <div class="user-pic">
           <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
             alt="User picture">
         </div>
@@ -18,13 +21,13 @@
             <span>Online</span>
           </span>
 
-        </div>
+        </div> -->
       </div>
 
       <!-- sidebar-search  -->
       <div class="sidebar-menu">
         <ul>
-          <!-- <li class="header-menu">
+          <li class="header-menu">
             <span>General</span>
           </li>
           <li>
@@ -66,7 +69,7 @@
                 </li>
               </ul>
             </div>
-          </li> -->
+          </li>
 
           <li class="sidebar-dropdown">
             <a href="#">

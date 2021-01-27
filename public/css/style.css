@@ -40,6 +40,11 @@
 }
 body {
     font-size: 0.9rem;
+    background-image: url("../img_system/bgOper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
 }
 .page-wrapper .sidebar-wrapper,
 .sidebar-wrapper .sidebar-brand > a,
@@ -156,7 +161,7 @@ body {
 /*--------------------sidebar-header----------------------*/
 
 .sidebar-wrapper .sidebar-header {
-    padding: 20px;
+    padding: 10px;
     overflow: hidden;
 }
 
@@ -227,7 +232,7 @@ body {
 
 .sidebar-wrapper .sidebar-menu ul li a i {
     margin-right: 10px;
-    font-size: 12px;
+    font-size: 20px;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -404,7 +409,7 @@ body {
 /*-----------------------------chiller-theme-------------------------------------------------*/
 
 .chiller-theme .sidebar-wrapper {
-    background: #024ab7;
+    background: #ffffff;
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-header,
@@ -434,7 +439,7 @@ body {
 .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
 .chiller-theme .sidebar-wrapper .sidebar-brand > a:hover,
 .chiller-theme .sidebar-footer > a:hover i {
-    color: #b8bfce;
+    color: #d65407;
 }
 
 .page-wrapper.chiller-theme.toggled #close-sidebar {
@@ -442,7 +447,7 @@ body {
 }
 
 .page-wrapper.chiller-theme.toggled #close-sidebar:hover {
-    color: #ffffff;
+    color: #5e5e5e;
 }
 
 .chiller-theme .sidebar-wrapper ul li:hover a i,
@@ -454,15 +459,15 @@ body {
     a:hover:before,
 .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu:focus + span,
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
-    color: #16c7ff;
-    text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
+    color: #fd7302;
+    text-shadow: 0px 0px 10px rgb(255, 255, 255);
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-menu ul li a i,
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
 .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
 .chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
-    background: #fcfcfc;
+    background: #fff;
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-menu .header-menu span {
