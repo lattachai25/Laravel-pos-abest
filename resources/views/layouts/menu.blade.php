@@ -31,9 +31,9 @@
             <span>General</span>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('ProductMatch.index') }}">
               <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
+              <span>Code Map</span>
             </a>
           </li>          
           <li>
@@ -51,18 +51,18 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-shopping-cart"></i>
-              <span>Shoping</span>
+              <span>Map PLU to SKU</span>
               <span class="badge badge-pill badge-warning">New</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
+                  <a href="{{ route('ProductMatch.index') }}"> List PLU to SKU
+                    <!-- <span class="badge badge-pill badge-success">Pro</span> -->
                   </a>
                 </li>
                 <li>
-                  <a href="#">Dashboard 2</a>
+                  <a href="{{ route('ProductMatch.create') }}">Map PLU To SKU</a>
                 </li>
                 <li>
                   <a href="#">Dashboard 3</a>

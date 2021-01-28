@@ -4,9 +4,8 @@ namespace App\Http\Controllers\ProductMatch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Product_Match;
-use App\product;
-use App\sour_partner;
+use plu_code;
+use sku_code;
 use DB;
 
 class ProductMatchController extends Controller
@@ -18,11 +17,14 @@ class ProductMatchController extends Controller
      */
     public function index()
     {
+       $pro = DB::table('plu_code')
+        ->select('plu_code.*','sku_code.*','price_plu_code.*')
+        ->join('sku_code', 'plu_code.id_plu', '=', 'sku_code.id_sku')
+        ->join('price_plu_code', 'plu_code.plu_code', '=', 'price_plu_code.plu_code')
+        // ->orderBy('id_plu', 'DESC')
+        ->get();
 
-
-           $Productmatch = Product_Match::all();
-           return view('sourcing.Product_match.index', compact('Productmatch'));
-
+        return view('sourcing.Product_match.index', compact('pro'));
     }
 
     /**
@@ -33,10 +35,10 @@ class ProductMatchController extends Controller
     public function create()
     {
 
-        $Productmatch = Product_Match::all();
-        $Sourpartner = sour_partner::all();
-        $Product = product::all();
-        return view('sourcing.Product_match.create', compact('Productmatch','Sourpartner','Product'));
+        // $Productmatch = Product_Match::all();
+        // $Sourpartner = sour_partner::all();
+        // $Product = product::all();
+        // return view('sourcing.Product_match.create', compact('Productmatch','Sourpartner','Product'));
     }
 
     /**
