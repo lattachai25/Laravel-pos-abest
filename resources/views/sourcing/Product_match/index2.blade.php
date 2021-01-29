@@ -9,7 +9,7 @@
 
 <br>
 <div class="alert alert-primary" role="alert">
-<h3>List PLU Code And SKU Code Width Price </h3>
+<h3>Edit List PLU Code And SKU Code Width Price </h3>
 </div>
 <br>
 <input id="myInput" class="float-right" type="text" placeholder="Search..">
@@ -27,6 +27,8 @@
       <th scope="col">Price3</th>
       <th scope="col">Price4</th>
       <th scope="col">Model</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Del</th>
     </tr>
   </thead>
   <tbody id="myTable">
@@ -41,6 +43,8 @@
       <td>{{ $pros->price3}}</td>
       <td>{{ $pros->price4}}</td>
       <td>{{ $pros->model}}</td>
+      <td><a href="{{ route('ProductMatch.edit', $pros->id_plu)}}" class="btn btn-warning">Edit</a></td>
+      <td><button type="button" class="btn btn-dark">Del</button></td>
     </tr>
   @endforeach
   </tbody>

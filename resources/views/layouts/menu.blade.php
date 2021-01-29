@@ -65,7 +65,7 @@
                   <a href="{{ route('ProductMatch.create') }}">Map PLU To SKU</a>
                 </li>
                 <li>
-                  <a href="#">Dashboard 3</a>
+                <a href="{{ route('ProductMatch.index') }}">Edit PLU To SKU</a>
                 </li>
               </ul>
             </div>

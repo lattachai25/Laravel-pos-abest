@@ -3,97 +3,72 @@
 @section('content')
 
 
-<div class="col-md-3 mb-2 ms-2"></div>
-<div class="col-md-8 mb-9 ms-9">
+<div class="col-2"></div>
+<div class="col-9" style="border:1px solid #FFF;">
+<br>
+<div class="alert alert-primary" role="alert">
+ <h3>Map  PLU Code To SKU Code width Price </h3>
+</div>
+<br>
 
-
-<form>
-  <div class="form-row">
-  <div class="col-8"> </div>    
-    <div class="col-3">
-        <select class="form-control">
-        @foreach($Sourpartner as $Sourpartners)
-        <option>{{ $Sourpartners->name_part}}</option>
-        @endforeach
-        </select>
-    </div>
-    <div class="col-1">
-
-<!-- <select id="myInput" onchange="myFunction()">
-  <option value="ผัก">ผัก</option>
-  <option value="ผลไม้">ผลไม้</option>
-</select> -->
-        <input type="text" id="myInput" onkeydown="myFunction()"  placeholder="Search for names..">
-
-    </div>
-    <div class="col-12">
-    <br>
-    <br>
-    <br>
-    </div>
-</div>    
-<div class="col-12">
-
-
-<table id="myTable">
-      <div class="row">
-        
-    @foreach($Product as $Products)
-        <tr>
-            <td style="border:1px solid #000; width:15%;">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">{{ $Products ->name_product }}</label>
-            </td>
-            <td style="border:1px solid #000; width:5%;">{{ $Products ->name_type }}</td>
-        </tr>
+<form action="{{ route('ProductMatch.store') }}" method='POST' enctype='multipart/form-data'>
+@csrf
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">PLU CODE</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="id_plu">
+    <option>เลือก PLU CODE</option>
+    @foreach($plu_code as $plu_codes)
+      <option value="{{ $plu_codes->id_plu }}">{{ $plu_codes->plu_code}}</option>
     @endforeach
-    </div>
-</table>
-
-
-
-    <!-- <div class="row">
-        @foreach($Product as $Products)
-        <div class="col-3" id="myTable">
-            <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">{{ $Products ->name_product }}</label>
-            <div style="display: none;"> {{ $Products ->name_type }} </div>
-            </div>
-        </div>
-        @endforeach
-    </div> -->
-</div>
-
+    </select>
   </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">SKU CODE</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="id_sku">
+    <option>เลือก SKU CODE</option>
+    @foreach($sku_code as $sku_codes)
+      <option value="{{ $sku_codes->id_sku }}">{{ $sku_codes->sku_code}}</option>
+    @endforeach
+    </select>
+  </div>  
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Name Product</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="plu_code_name">
+    <option>เลือก Name Product</option>
+    @foreach($plu_code as $plu_codes)
+      <option value="{{ $plu_codes->plu_code_name }}">{{ $plu_codes->plu_code_name}} {{ $sku_codes->sku_code_name}}</option>
+    @endforeach
+    </select>
+  </div>  
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Product Type</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="model">
+    <option>เลือก Type Product</option>
+    @foreach($model as $models)
+      <option value="{{ $models->model }}">{{ $models->model}}</option>
+    @endforeach
+    </select>
+  </div>  
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Price1</label>
+    <input type="text" class="form-control" name="price1" placeholder="Prict 1">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Price2</label>
+    <input type="text" class="form-control" name="price2" placeholder="Prict 2">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Price3</label>
+    <input type="text" class="form-control" name="price3" placeholder="Prict 3">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Price4</label>
+    <input type="text" class="form-control" name="price4" placeholder="Prict 4">
+  </div>
+  <button type="submit" class="btn btn-success float-right">Submit</button>
+
 </form>
-
-
-
-
-
 </div>
-<script>
-function myFunction() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
 @endsection
