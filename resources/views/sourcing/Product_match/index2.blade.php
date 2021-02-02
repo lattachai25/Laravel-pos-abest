@@ -9,7 +9,7 @@
 
 <br>
 <div class="alert alert-primary" role="alert">
-<h3>Edit List PLU Code And SKU Code Width Price </h3>
+<h3>Edit Code</h3>
 </div>
 <br>
 <input id="myInput" class="float-right" type="text" placeholder="Search..">

@@ -16,7 +16,13 @@ class OrderlisController extends Controller
     public function index()
     {
         //
-        $order = master_product::all();
+        $order = DB::table('master_products')
+        ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
+        ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
+        ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
+        ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
+        ->get();
+        
         return view('sourcing.order.index', compact('order'));
     }
 
@@ -24,9 +30,10 @@ class OrderlisController extends Controller
     {
         //
         $order = DB::table('master_products')
-        ->select('master_products.*','plu_codes.*','sku_codes.*')
+        ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
         ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
         ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
+        ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
         ->get();
 
         return view('sourcing.order.create', compact('order'));

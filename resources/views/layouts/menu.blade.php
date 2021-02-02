@@ -58,12 +58,12 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="{{ route('ProductMatch.index') }}"> List PLU to SKU
+                  <a href="{{ route('ProductMatch.index') }}">List PLU to SKU
                     <!-- <span class="badge badge-pill badge-success">Pro</span> -->
                   </a>
                 </li>
                 <li>
-                  <a href="{{ route('ProductMatch.create') }}">Map PLU To SKU</a>
+                  <a href="{{ route('ProductMatch.create') }}">Mapping Code</a>
                 </li>
                 <li>
                 <a href="{{ route('ProductMatch2.index2') }}">Edit PLU To SKU</a>
@@ -75,7 +75,7 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-database"></i>
-              <span>Order</span>
+              <span>Order To Store </span>
               <!-- <span class="badge badge-pill badge-warning">1</span> -->
             </a>
             <div class="sidebar-submenu">

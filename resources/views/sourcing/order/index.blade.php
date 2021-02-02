@@ -9,19 +9,18 @@
 
 <br>
 <div class="alert alert-primary" role="alert">
-<h3>LIST Order ALL</h3>
+<h3>List Order To Store ALL</h3>
 </div>
 <br>
 <input id="myInput" class="float-left" type="text" placeholder="Search..">
 <br>
 <br>
 <table class="table table-hover">
-<a href=""> <button type="button" class="btn btn-primary float-right">Create PLU CODE</button></a>
+<!-- <a href=""> <button type="button" class="btn btn-primary float-right">Create PLU CODE</button></a> -->
 <br><br>
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Checkbox</th>
       <th scope="col">SKU Code</th>
       <th scope="col">SKU Name Product</th>
       <th scope="col">PLU Code</th>
@@ -35,12 +34,11 @@
   @foreach($order as $key=>$orders)
     <tr>
       <th scope="row" style="width:100px;">{{ $key+1}}</th>
-      <td style="width:20px;"><input type="checkbox" name="category" class="form-control" value="{{ $orders->category }}" style="width:150px;" readonly></td>
-      <td> <input type="text" hidden name="sku_code" class="form-control" value="{{ $orders->sku_code}}" style="width:150px;" readonly>{{ $orders->id_sku}} </td>
+      <td> <input type="text" hidden name="sku_code" class="form-control" value="{{ $orders->sku_code}}" style="width:150px;" readonly>{{ $orders->sku_code}} </td>
       <td> <input type="text" hidden name="sku_code_name" class="form-control" value="{{ $orders->sku_code_name}}" readonly>{{ $orders->sku_code_name}} </td>
-      <td> <input type="text" hidden name="plu_code" class="form-control" value="{{ $orders->plu_code}}" style="width:150px;" readonly>{{ $orders->id_plu}} </td>
+      <td> <input type="text" hidden name="plu_code" class="form-control" value="{{ $orders->plu_code}}" style="width:150px;" readonly>{{ $orders->plu_code}} </td>
       <td> <input type="text" hidden name="plu_code_name" class="form-control" value="{{ $orders->plu_code_name}}" readonly>{{ $orders->plu_code_name}} </td>
-      <td> <input type="text" hidden name="price1" class="form-control" value="{{ $orders->price1}}" style="width:100px;">{{ $orders->price1}} </td>
+      <td> <input type="text" hidden name="price1" class="form-control" value="{{ $orders->price}}" style="width:100px;">{{ $orders->price}} </td>
       <td> <input type="text" hidden name="model" class="form-control" value="{{ $orders->model}}" style="width:50px;" readonly>{{ $orders->model}} </td>
     </tr>
   @endforeach  

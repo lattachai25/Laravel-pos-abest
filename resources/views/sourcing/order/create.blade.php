@@ -7,7 +7,7 @@
 <div class="col-8">
 <br>
 <div class="alert alert-primary" role="alert">
- <h3>Create Order</h3>
+ <h3>Create Order To Store</h3>
 </div>
 <br>
 
@@ -40,7 +40,7 @@
       <td> <input type="text" hidden name="sku_code_name" class="form-control" value="{{ $orders->sku_code_name}}" readonly>{{ $orders->sku_code_name}} </td>
       <td> <input type="text" hidden name="plu_code" class="form-control" value="{{ $orders->plu_code}}" style="width:150px;" readonly>{{ $orders->plu_code}} </td>
       <td> <input type="text" hidden name="plu_code_name" class="form-control" value="{{ $orders->plu_code_name}}" readonly>{{ $orders->plu_code_name}} </td>
-      <td> <input type="text" name="price1" class="form-control" value="{{ $orders->price1}}" style="width:100px;"></td>
+      <td> <input type="text" name="price" class="form-control" value="{{ $orders->price}}" style="width:100px;"></td>
       <td> <input type="text" hidden name="model" class="form-control" value="{{ $orders->model}}" style="width:50px;" readonly>{{ $orders->model}} </td>
     </tr>
   @endforeach  

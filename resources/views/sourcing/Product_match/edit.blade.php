@@ -6,7 +6,7 @@
 <div class="col-8" style="border:1px solid #FFF;">
 <br>
 <div class="alert alert-primary" role="alert">
- <h3>Map  PLU Code To SKU Code width Price </h3>
+ <h3>Edit Code</h3>
 </div>
 <br>
 

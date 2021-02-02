@@ -8,6 +8,7 @@ use App\plu_code;
 use App\sku_code;
 use App\master_product;
 use App\pro_type;
+use App\type_and_code;
 use DB;
 
 class ProductMatchController extends Controller
