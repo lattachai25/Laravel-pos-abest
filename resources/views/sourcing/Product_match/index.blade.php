@@ -4,8 +4,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-<div class="col-2"></div>
-<div class="col-9" style="border:1px solid #fff;">
+<div class="col-3"></div>
+<div class="col-8" style="border:1px solid #fff;">
 
 <br>
 <div class="alert alert-primary" role="alert">
@@ -19,13 +19,12 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">PLI Code</th>
+      <th scope="col">PLU Code</th>
+      <th scope="col">Name Product By PLU</th>
       <th scope="col">SKU Code</th>
-      <th scope="col">Name Product</th>
+      <th scope="col">Name Product By SKU</th>
       <th scope="col">Price</th>
-      <th scope="col">Price2</th>
-      <th scope="col">Price3</th>
-      <th scope="col">Price4</th>
+
       <th scope="col">Model</th>
     </tr>
   </thead>
@@ -34,12 +33,10 @@
     <tr>
     <td>{{ $key+1}}</td>
       <td>{{ $pros->plu_code}}</td>
-      <td>{{ $pros->sku_code}}</td>
       <td>{{ $pros->plu_code_name}}</td>
+      <td>{{ $pros->sku_code}}</td>
+      <td>{{ $pros->sku_code_name}}</td>
       <td>{{ $pros->price}}</td>
-      <td>{{ $pros->price2}}</td>
-      <td>{{ $pros->price3}}</td>
-      <td>{{ $pros->price4}}</td>
       <td>{{ $pros->model}}</td>
     </tr>
   @endforeach

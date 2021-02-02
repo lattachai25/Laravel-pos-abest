@@ -10,10 +10,8 @@ class master_product extends Model
         'id_plu',
         'id_sku',
         'plu_code_name',
+        'sku_code_name',
         'price1',
-        'price2',
-        'price3',
-        'price4',
         'model'
       ];
 

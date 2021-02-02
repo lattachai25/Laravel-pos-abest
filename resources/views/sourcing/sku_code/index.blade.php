@@ -1,5 +1,5 @@
 @extends('layouts.adminpage')
-@section('title', 'Page Admin')
+@section('title', 'SKU')
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -9,43 +9,39 @@
 
 <br>
 <div class="alert alert-primary" role="alert">
-<h3>Edit List PLU Code And SKU Code Width Price </h3>
+<h3>LIST SKU Code ALL</h3>
 </div>
 <br>
-<input id="myInput" class="float-right" type="text" placeholder="Search..">
+<input id="myInput" class="float-left" type="text" placeholder="Search..">
 <br>
 <br>
 <table class="table table-hover">
+<a href="{{ route('SkuCode.create') }}"> <button type="button" class="btn btn-primary float-right">Create PLU CODE</button></a>
+<br><br>
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">PLU Code</th>
-      <th scope="col">Name Product By PLU</th>
-      <th scope="col">SKU Code</th>
-      <th scope="col">Name Product By SKU</th>
-      <th scope="col">Price</th>
-      <th scope="col">Model</th>
-      <th scope="col">Edit</th>
-      <!-- <th scope="col">Del</th> -->
+      <th scope="col">Name Product</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
     </tr>
   </thead>
   <tbody id="myTable">
-  @foreach($pro as $key=>$pros)
+  @foreach($sku as $key=>$plus)
     <tr>
     <td>{{ $key+1}}</td>
-      <td>{{ $pros->plu_code}}</td>
-      <td>{{ $pros->plu_code_name}}</td>
-      <td>{{ $pros->sku_code}}</td>
-      <td>{{ $pros->sku_code_name}}</td>
-      <td>{{ $pros->price}}</td>
-      <td>{{ $pros->model}}</td>
-      <td><a href="{{ route('ProductMatch.edit', $pros->id)}}" class="btn btn-warning">Edit</a></td>
+      <td>{{ $plus->sku_code}}</td>
+      <td>{{ $plus->sku_code_name}}</td>
+
+      <td><a href="{{ route('SkuCode.edit', $plus->id_sku)}}" class="btn btn-warning">Edit</a></td>
       <td>
-      <!-- <form action="{{ route('ProductMatch.destroy', $pros->id)}}" method="post">
+      <form action="{{ route('SkuCode.destroy', $plus->id_sku)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
-                </form> -->
+                </form>
       </td>
     </tr>
   @endforeach

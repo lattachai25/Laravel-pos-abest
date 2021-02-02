@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\orderlis;
+use App\pro_type;
 use Illuminate\Http\Request;
 
-class OrderlisController extends Controller
+class ProTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OrderlisController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\orderlis  $orderlis
+     * @param  \App\pro_type  $pro_type
      * @return \Illuminate\Http\Response
      */
-    public function show(orderlis $orderlis)
+    public function show(pro_type $pro_type)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrderlisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\orderlis  $orderlis
+     * @param  \App\pro_type  $pro_type
      * @return \Illuminate\Http\Response
      */
-    public function edit(orderlis $orderlis)
+    public function edit(pro_type $pro_type)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrderlisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\orderlis  $orderlis
+     * @param  \App\pro_type  $pro_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, orderlis $orderlis)
+    public function update(Request $request, pro_type $pro_type)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrderlisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\orderlis  $orderlis
+     * @param  \App\pro_type  $pro_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orderlis $orderlis)
+    public function destroy(pro_type $pro_type)
     {
         //
     }

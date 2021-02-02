@@ -28,9 +28,9 @@
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu">
-            <span>General</span>
+           <span style="font-size:20px; margin-left:10px;">General</span>
           </li>
-          <li>
+          <!-- <li>
             <a href="{{ route('ProductMatch.index') }}">
               <i class="fa fa-tachometer-alt"></i>
               <span>Code Map</span>
@@ -47,12 +47,13 @@
               <i class="fa fa-life-ring"></i>
               <span>About</span>
             </a>
-          </li>
+          </li> -->
+
+
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-shopping-cart"></i>
               <span>Map PLU to SKU</span>
-              <span class="badge badge-pill badge-warning">New</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
@@ -65,7 +66,7 @@
                   <a href="{{ route('ProductMatch.create') }}">Map PLU To SKU</a>
                 </li>
                 <li>
-                <a href="{{ route('ProductMatch.index') }}">Edit PLU To SKU</a>
+                <a href="{{ route('ProductMatch2.index2') }}">Edit PLU To SKU</a>
                 </li>
               </ul>
             </div>
@@ -74,25 +75,22 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-database"></i>
-              <span>Product match</span>
+              <span>Order</span>
+              <!-- <span class="badge badge-pill badge-warning">1</span> -->
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="{{ route('ProductMatch.index') }}">Product match Index</a>
+                  <a href="{{ route('Order.index') }}">List Order All</a>
                 </li>
                 <li>
-                  <a href="{{ route('ProductMatch.create') }}">Product match Add</a>
+                  <a href="{{ route('Order.create') }}">Create Order</a>
                 </li>             
               </ul>
             </div>
           </li>
 
-
-
-
-
-          <li class="sidebar-dropdown">
+          <!-- <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-database"></i>
               <span>Products</span>
@@ -102,13 +100,13 @@
                 <li>
                   <a href="{{ route('Product.index') }}">Product Report</a>
                 </li>
-                <!-- <li>
+                <li>
                   <a href="{{ route('Product.create') }}">Add Product</a>
-                </li> -->
+                </li>
               </ul>
             </div>
-          </li>
-          <li class="sidebar-dropdown">
+          </li> -->
+          <!-- <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-database"></i>
               <span>Partners</span>
@@ -123,12 +121,7 @@
                 </li>
               </ul>
             </div>
-          </li>
-
-
-
-
-
+          </li> -->
 
           <!-- <li class="sidebar-dropdown">
             <a href="#">

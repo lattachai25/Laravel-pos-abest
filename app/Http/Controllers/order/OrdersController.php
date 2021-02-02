@@ -1,11 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\order;
 
-use App\type_products;
+use App\Order;
+use App\plu_code;
+use App\sku_code;
+use App\master_product;
+use App\pro_type;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use DB;
 
-class TypeProductsController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +21,8 @@ class TypeProductsController extends Controller
     public function index()
     {
         //
+        $order = Order::all();
+        return view('sourcing.order.index',compact('order'));
     }
 
     /**
@@ -25,6 +33,7 @@ class TypeProductsController extends Controller
     public function create()
     {
         //
+        return view('sourcing.order.create');
     }
 
     /**
@@ -36,15 +45,19 @@ class TypeProductsController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+        $input['category'] = $request->input('category');
+        Post::create($input);
+        return redirect()->route('posts.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\type_products  $type_products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(type_products $type_products)
+    public function show($id)
     {
         //
     }
@@ -52,10 +65,10 @@ class TypeProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\type_products  $type_products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(type_products $type_products)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +77,10 @@ class TypeProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\type_products  $type_products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, type_products $type_products)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +88,10 @@ class TypeProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\type_products  $type_products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(type_products $type_products)
+    public function destroy($id)
     {
         //
     }

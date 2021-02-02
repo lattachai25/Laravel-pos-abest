@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class type_product extends Model
+class pro_type extends Model
 {
-    protected $fillable = ['name_type'];
+    protected $fillable = ['model'];
     public $timestamps = false;
 }

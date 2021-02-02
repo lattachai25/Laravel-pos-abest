@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\plu_code;
 use App\sku_code;
 use App\master_product;
-use App\type_products;
+use App\pro_type;
 use DB;
 
 class ProductMatchController extends Controller
@@ -19,33 +19,43 @@ class ProductMatchController extends Controller
      */
     public function index()
     {
-       $pro = DB::table('plu_code')
-        ->select('plu_code.*','sku_code.*','price_plu_code.*')
-        ->join('sku_code', 'plu_code.id_plu', '=', 'sku_code.id_sku')
-        ->join('price_plu_code', 'plu_code.plu_code', '=', 'price_plu_code.plu_code')
-        // ->orderBy('id_plu', 'DESC')
+        $pro = DB::table('master_products')
+        ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
+        ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
+        ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
+        ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
+        ->get();
+
+        return view('sourcing.Product_match.index', compact('pro'));
+    }
+
+
+    public function index2()
+    {
+    $pro = DB::table('master_products')
+        ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
+        ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
+        ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
+        ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
         ->get();
 
         return view('sourcing.Product_match.index2', compact('pro'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function create()
     {
-
-        $plu_code = DB::table('plu_code')
-        ->select('plu_code.*')
+        $plu_code = DB::table('plu_codes')
+        ->select('plu_codes.*')
         ->orderBy('id_plu', 'DESC')
         ->get();
-        $sku_code = DB::table('sku_code')
-        ->select('sku_code.*')
+        $sku_code = DB::table('sku_codes')
+        ->select('sku_codes.*')
         ->orderBy('id_sku', 'DESC')
         ->get();
-        $model = DB::table('type_products')
-        ->select('type_products.*')
+        $model = DB::table('pro_types')
+        ->select('pro_types.*')
         ->orderBy('id', 'DESC')
         ->get();
 
@@ -70,38 +80,33 @@ class ProductMatchController extends Controller
     //   echo $request->get('price4');
 
 
+    $request->validate([
+        'id_plu'=>'required',
+        'id_sku'=>'required',
+        'plu_code_name'=>'required',
+        'sku_code_name'=>'required'
+    ]);
 
-        $request->validate([
-            'id_plu'=>'required',
-            'id_sku'=>'required',
-            'plu_code_name'=>'required',
-            'price1'=>'required',
-            'price2' => '',
-            'price3'=>'',
-            'price4'=>'',
-            'model'=>'required'
-        ]);
-        master_product::create($request->all());
-
-    return redirect('/sourcing/Product_match/index')->with('success', 'ได้ทำการเพิ่ม SKU เรียบร้อยแล้ว');
+    $contact = new master_product([
+        'id_plu' => $request->get('id_plu'),
+        'id_sku' => $request->get('id_sku'),
+        'plu_code_name' => $request->get('plu_code_name'),
+        'sku_code_name' => $request->get('sku_code_name'),
+        'price1' => $request->get('price1'),
+        'model' => $request->get('model')
+    ]);
+    $contact->save();
+    return redirect('/ProductMatch')->with('success', 'Contact PLU TO SKU!');
     }
-
     /**
      * Display the specified resource.
      *
      * @param  \App\Product_Match  $product_Match
      * @return \Illuminate\Http\Response
      */
-    public function show(Product_Match $product_Match)
+    public function show($id)
     {
-        $pro = DB::table('plu_code')
-        ->select('plu_code.*','sku_code.*','price_plu_code.*')
-        ->join('sku_code', 'plu_code.id_plu', '=', 'sku_code.id_sku')
-        ->join('price_plu_code', 'plu_code.plu_code', '=', 'price_plu_code.plu_code')
-        // ->orderBy('id_plu', 'DESC')
-        ->get();
 
-        return view('sourcing.Product_match.index2', compact('pro'));
     }
 
     /**
@@ -110,17 +115,32 @@ class ProductMatchController extends Controller
      * @param  \App\Product_Match  $product_Match
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_plu)
+    public function edit($id)
     {
 
-        echo "OK = ".$id_plu;
+      $set =  master_product::find($id)
+      ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
+      ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
+      ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
+      ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
+      ->where('id', $id)
+      ->get();
 
-        $set = plu_code::find($id_plu);
-        $set->plu_code = $request->get('plu_code');
-        $set->plu_code_name = $request->get('plu_code_name');
 
-        return view('sourcing.Product_match.edit', compact('set'));
+      $plu_code = DB::table('plu_codes')
+      ->select('plu_codes.*')
+      ->orderBy('id_plu', 'DESC')
+      ->get();
+      $sku_code = DB::table('sku_codes')
+      ->select('sku_codes.*')
+      ->orderBy('id_sku', 'DESC')
+      ->get();
+      $model = DB::table('pro_types')
+      ->select('pro_types.*')
+      ->orderBy('id', 'DESC')
+      ->get();
 
+      return view('sourcing.Product_match.edit', compact('set','plu_code','sku_code','model'));
     }
 
     /**
@@ -130,9 +150,38 @@ class ProductMatchController extends Controller
      * @param  \App\Product_Match  $product_Match
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product_Match $product_Match)
+    public function update(Request $request, $id)
     {
-        //
+
+
+    //   echo $request->get('id_plu'); 
+    //   echo $request->get('id_sku');
+    //   echo $request->get('plu_code_name');
+    //   echo $request->get('price1');
+    //   echo $request->get('price2');
+    //   echo $request->get('price3');
+    //   echo $request->get('price4');
+
+
+    //   echo $request->validate([
+    //         'id'=>'required',
+    //         'id_plu'=>'required',
+    //         'id_sku'=>'required',
+    //         'plu_code_name'=>'required'
+    //     ]);
+    
+            $contact = master_product::find($id);
+            $contact->id_plu = $request->get('id_plu');
+            $contact->id_sku = $request->get('id_sku');
+            $contact->plu_code_name = $request->get('plu_code_name');
+            $contact->price = $request->get('price');
+            $contact->model = $request->get('model');
+ 
+        $contact->save();
+        return redirect('/ProductMatch2')->with('success', 'Update PLU TO SKU!');
+
+
+
     }
 
     /**
@@ -141,8 +190,11 @@ class ProductMatchController extends Controller
      * @param  \App\Product_Match  $product_Match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product_Match $product_Match)
+    public function destroy($id)
     {
-        //
+        $contact = master_product::find($id);
+        $contact->delete();
+
+        return redirect('/ProductMatch2')->with('success', 'Delete PLU TO SKU!');
     }
 }
