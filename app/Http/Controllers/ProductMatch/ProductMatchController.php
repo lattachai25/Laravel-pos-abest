@@ -9,6 +9,7 @@ use App\sku_code;
 use App\master_product;
 use App\pro_type;
 use App\type_and_code;
+use App\price_plu_code;
 use DB;
 
 class ProductMatchController extends Controller
@@ -21,23 +22,26 @@ class ProductMatchController extends Controller
     public function index()
     {
         $pro = DB::table('master_products')
-        ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
-        ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
-        ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
-        ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
+        ->select('master_product.*','plu_code.*','sku_code.*')
+        ->join('plu_code', 'master_product.id_plu', '=', 'plu_code.id_plu')
+        ->join('sku_code', 'master_product.id_sku', '=', 'sku_code.id_sku')
         ->get();
 
-        return view('sourcing.Product_match.index', compact('pro'));
+
+        echo  $pro;
+
+
+        // return view('sourcing.Product_match.index', compact('pro'));
+
     }
 
 
     public function index2()
     {
     $pro = DB::table('master_products')
-        ->select('master_products.*','plu_codes.*','sku_codes.*','price_plu_code.*')
+        ->select('master_products.*','plu_codes.*','sku_codes.*')
         ->join('plu_codes', 'master_products.id_plu', '=', 'plu_codes.id_plu')
         ->join('sku_codes', 'master_products.id_sku', '=', 'sku_codes.id_sku')
-        ->join('price_plu_code', 'master_products.plu_code_name', '=', 'price_plu_code.barcode')
         ->get();
 
         return view('sourcing.Product_match.index2', compact('pro'));

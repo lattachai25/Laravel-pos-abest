@@ -9,35 +9,20 @@ Auth::routes();
 Route::resource('/', 'HomeController');
 Route::resource('/home', 'HomeController');
 
-// -----------------------------   Sourcing    -------------------------------------
-Route::resource('/SourMain', 'Sourcing\SourMainController');
-Route::resource('/SourPartner', 'Sourcing\SourPartnerController');
-Route::resource('/SourPrice', 'Sourcing\SourPriceController');
-Route::resource('/SourProduct', 'Sourcing\SourProductController');
+// -----------------------------       -------------------------------------
+Route::resource('/sku', 'sku\SkuController');
+Route::resource('/plu', 'plu\PluController');
+Route::resource('/price', 'price\PriceController');
+Route::resource('/branch', 'branch\BranchController');
+Route::resource('/master', 'master\MasterController');
+Route::resource('/order', 'order\OrderController');
+Route::resource('/brancheOrder', 'BrancheOrderController');
 
-// -----------------------------   Sourcing    -------------------------------------
+Route::resource('/mappingcode', 'mappingcode\MappingController');
+Route::get('/mappingcode_edit','mappingcode\MappingController@mappingcode_edit')->name('mappingcode_edit');
 
-// -----------------------------   Products    -------------------------------------
-Route::resource('/Product', 'Product\ProductController');
+Route::post('/order_show','order\OrderController@order_show')->name('order_show');
+Route::get('/index2','order\OrderController@index2')->name('index2');
+Route::post('/postData','order\OrderController@postData')->name('postData');
 
-// -----------------------------   Products    -------------------------------------
-
-// -----------------------------   Product match    -------------------------------------
-Route::resource('/ProductMatch', 'ProductMatch\ProductMatchController');
-Route::get('/ProductMatch2','ProductMatch\ProductMatchController@index2')->name('ProductMatch2.index2');;
-// -----------------------------   Product match    -------------------------------------
-
-// -----------------------------   Add Plu    -------------------------------------
-Route::resource('/PluCode', 'plu_code\PluCodeController');
-// -----------------------------   Add Plu    -------------------------------------
-// -----------------------------   Add SKU    -------------------------------------
-Route::resource('/SkuCode', 'sku_code\SkuCodeController');
-// -----------------------------   Add SKU    -------------------------------------
-
-// -----------------------------   Add SKU    -------------------------------------
-Route::resource('/Order', 'order\OrderlisController');
-// -----------------------------   Add SKU    -------------------------------------
-
-// // -----------------------------   Add Order    -------------------------------------
-// Route::resource('/Order', 'order\OrdersController');
-// // -----------------------------   Add Order    -------------------------------------
+// -----------------------------      -------------------------------------
